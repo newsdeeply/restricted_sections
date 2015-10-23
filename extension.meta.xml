@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension id="restricted_sections" status="experimental" xmlns="http://symphony-cms.com/schemas/extension/1.0">
+	<name>Restricted sections</name>
+	<description>
+		Restricts authors to selected sections only.
+		This extensions offers real security, as any attempt to view or edit entries
+		in un-allowed sections will result in a security exception.
+		This exception is also written in Symphony's log.
+
+		TODO: Manager are only allowed to delegate their 
+	</description>
+	<repo type="github">https://github.com/DeuxHuitHuit/restricted_sections</repo>
+	<url type="discuss">http://www.getsymphony.com/discuss/thread/xxx/</url>
+	<url type="issues">https://github.com/DeuxHuitHuit/restricted_sections/issues</url>
+	<types>
+		<type>Authors</type>
+		<type>Workflow</type>
+	</types>
+	<authors>
+		<author>
+			<name github="DeuxHuitHuit" symphony="nitriques" twitter="DeuxHuitHuit">Deux Huit Huit</name>
+			<website>https://deuxhuithuit.com/</website>
+		</author>
+	</authors>
+	<dependencies>
+		<!-- None -->
+	</dependencies>
+	<releases>
+		<release version="0.1.0" date="TBA" min="2.6.0" max="2.7.x">
+			- First release
+		</release>
+	</releases>
+</extension>
