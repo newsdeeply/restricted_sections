@@ -184,7 +184,7 @@
 
 			$sections = SectionManager::fetch();
 
-			$group = static::createAuthorFormElements($sections);
+			$group = static::createAuthorFormElements($sections, $context['errors']);
 
 			$context['form']->insertChildAt(2, $group);
 		}
@@ -254,7 +254,7 @@
 
 		/* ********* LIB ******* */
 
-		protected static function createAuthorFormElements(array $sections)
+		protected static function createAuthorFormElements(array $sections, $errors)
 		{
 			$group = new XMLElement('fieldset');
 			$group->setAttribute('class', 'settings');
@@ -279,8 +279,10 @@
 			$select = Widget::Select('restr_section[sections][]', $options, $attributes);
 			$label->appendChild($select);
 
-			if ($_SERVER['REQUEST_METHOD'] === 'POST' && !static::isValid()) {
-				$group->appendChild(Widget::Error($label, 'Error'));
+			if ($_SERVER['REQUEST_METHOD'] === 'POST' &&
+				is_array($errors) &&
+				isset($errors['restr_section'])) {
+				$group->appendChild(Widget::Error($label, $errors['restr_section']));
 			}
 			else {
 				$group->appendChild($label);
@@ -318,7 +320,7 @@
 		{
 			if (!static::isValid($section_ids)) {
 				if (is_array($errors)) {
-					$error['restr_section'] = 'Please select a value for Restricted Section';
+					$errors['restr_section'] = 'Please select a value for Restricted Section';
 				}
 				return false;
 			}
