@@ -258,7 +258,7 @@
 		{
 			$group = new XMLElement('fieldset');
 			$group->setAttribute('class', 'settings');
-			$group->appendChild(new XMLElement('legend', __('Restrcited Sections')));
+			$group->appendChild(new XMLElement('legend', __('Restricted Sections')));
 			$help = new XMLElement('p', __('Insert help message here'), array('class' => 'help'));
 			$group->appendChild($help);
 
