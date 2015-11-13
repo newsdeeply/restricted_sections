@@ -329,7 +329,7 @@
 
 		protected static function save(array $section_ids, Author $author)
 		{
-			$ret = Symphony::Database()->delete(self::TBL_NAME, '1=0');
+			$ret = Symphony::Database()->delete(self::TBL_NAME, '`author_id` = ' . intval($author->get('id')));
 			foreach ($section_ids as $section_id) {
 				if ($section_id === null || $section_id == '' || !ctype_digit($section_id)) {
 					continue;
