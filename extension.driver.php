@@ -184,7 +184,7 @@
 
 			$sections = SectionManager::fetch();
 
-			$group = static::createAuthorFormElements($sections, $context['errors']);
+			$group = static::createAuthorFormElements($author, $sections, $context['errors']);
 
 			$context['form']->insertChildAt($context['form']->getNumberOfChildren() - 2, $group);
 		}
@@ -254,7 +254,7 @@
 
 		/* ********* LIB ******* */
 
-		protected static function createAuthorFormElements(array $sections, $errors)
+		protected static function createAuthorFormElements(Author &$author, array $sections, $errors)
 		{
 			$group = new XMLElement('fieldset');
 			$group->setAttribute('class', 'settings');
@@ -269,12 +269,20 @@
 				'class' => 'required',
 				//'required' => 'required',
 			);
+
+			$authorCurrentSections = array_map(function ($section) {
+				return intval($section['section_id']);
+			}, static::fetch($author->get('id')));
 			$options = array(
-				array(0, false, __('All Sections'))
+				array(0, in_array(0, $authorCurrentSections), __('All Sections'))
 			);
 
 			foreach ($sections as $section) {
-				$options[] = array($section->get('id'), false, $section->get('name'));
+				$options[] = array(
+					$section->get('id'),
+					in_array(intval($section->get('id')),
+					$authorCurrentSections
+				), $section->get('name'));
 			}
 			$select = Widget::Select('restr_section[sections][]', $options, $attributes);
 			$label->appendChild($select);
