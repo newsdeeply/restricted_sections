@@ -14,7 +14,6 @@
 	 */
 	class extension_restricted_sections extends Extension
 	{
-
 		/**
 		 * Name of the extension
 		 * @var string
@@ -267,7 +266,7 @@
 			$attributes = array(
 				'multiple' => 'multiple',
 				'class' => 'required',
-				//'required' => 'required',
+				'required' => 'required',
 			);
 
 			$authorCurrentSections = array_map(function ($section) {
