@@ -186,7 +186,7 @@
 
 			$group = static::createAuthorFormElements($sections, $context['errors']);
 
-			$context['form']->insertChildAt(2, $group);
+			$context['form']->insertChildAt($context['form']->getNumberOfChildren() - 2, $group);
 		}
 
 
