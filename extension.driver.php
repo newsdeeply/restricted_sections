@@ -234,11 +234,8 @@
 				$curAuthor->isPrimaryAccount()) {
 				return;
 			}
-			$page = Administration::instance()->Page;
-			$page_context = $page->getContext();
-			// Content pages only
-			if ($page instanceof contentPublish) {
-				$section_id = SectionManager::fetchIDFromHandle($page_context['section_handle']);
+			if (is_array($context['section']) && intval($context['section']['id']) > 0) {
+				$section_id = $context['section']['id'];
 				$hasAccess = static::canAccessSection($section_id);
 				if (!$hasAccess) {
 					// update delegate value
@@ -246,6 +243,7 @@
 					// Log that thing up
 					$message = "Access to {$context[page_url]} has been denied for user " .
 							$curAuthor->get('username');
+					// TODO: only log real access denials, not navigation
 					Symphony::Log()->pushToLog($message, E_WARNING, true, true, false);
 				}
 			}
