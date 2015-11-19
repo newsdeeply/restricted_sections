@@ -265,7 +265,7 @@
 					$message = "Access to {$context[page_url]} has been denied for user " .
 							$curAuthor->get('username');
 					// TODO: only log real access denials, not navigation
-					Symphony::Log()->pushToLog($message, E_WARNING, true, true, false);
+					//Symphony::Log()->pushToLog($message, E_WARNING, true, true, false);
 				}
 			}
 		}
