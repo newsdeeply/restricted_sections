@@ -105,6 +105,24 @@
 			);
 		}
 
+		protected static function isAllowedToEdit()
+		{
+			$curAuthor = Symphony::Author();
+			// Takes privileges to edit this
+			if (!$curAuthor->isDeveloper() &&
+				!$curAuthor->isManager() &&
+				!$curAuthor->isPrimaryAccount()) {
+				return false;
+			}
+			// Even manager should not edit their own
+			if (!$curAuthor->isDeveloper() &&
+				!$curAuthor->isPrimaryAccount() &&
+				$curAuthor->get('id') == $author->get('id')) {
+				return false;
+			}
+			return true;
+		}
+
 		/**
 		 *
 		 * Appends javascript/css files references into the head, if needed
@@ -161,25 +179,16 @@
 
 		public function addElementstoAuthorForm(array $context)
 		{
-			$author = $context['author'];
-			$curAuthor = Symphony::Author();
-			// Takes privileges to edit this
-			if (!$curAuthor->isDeveloper() &&
-				!$curAuthor->isManager() &&
-				!$curAuthor->isPrimaryAccount()) {
+			if (!static::isAllowedToEdit()) {
 				return;
 			}
-			// Even manager should not edit their own
-			if (!$curAuthor->isDeveloper() &&
-				!$curAuthor->isPrimaryAccount() &&
-				$curAuthor->get('id') == $author->get('id')) {
-				return;
-			}
+
 			/*
 			'form' => &$this->Form,
 			'author' => $author,
 			'fields' => $_POST['fields'],
 			*/
+			$author = $context['author'];
 
 			$sections = SectionManager::fetch();
 
@@ -202,22 +211,34 @@
 
 		public function authorPreCreate(array $context)
 		{
+			if (!static::isAllowedToEdit()) {
+				return;
+			}
 			static::validate(static::getSectionsFromPOST(), $context['errors']);
 		}
 
 		public function authorPostCreate(array $context)
 		{
+			if (!static::isAllowedToEdit()) {
+				return;
+			}
 			static::save(static::getSectionsFromPOST(), $context['author']);
 		}
 
 
 		public function authorPreEdit(array $context)
 		{
+			if (!static::isAllowedToEdit()) {
+				return;
+			}
 			static::validate(static::getSectionsFromPOST(), $context['errors']);
 		}
 
 		public function authorPostEdit(array $context)
 		{
+			if (!static::isAllowedToEdit()) {
+				return;
+			}
 			static::save(static::getSectionsFromPOST(), $context['author']);
 		}
 
