@@ -222,7 +222,11 @@
 			if (!static::isAllowedToEdit()) {
 				return;
 			}
-			static::save(static::getSectionsFromPOST(), $context['author']);
+			$sections = static::getSectionsFromPOST();
+			if ($sections == null) {
+				return;
+			}
+			static::save($sections, $context['author']);
 		}
 
 
@@ -239,7 +243,11 @@
 			if (!static::isAllowedToEdit()) {
 				return;
 			}
-			static::save(static::getSectionsFromPOST(), $context['author']);
+			$sections = static::getSectionsFromPOST();
+			if ($sections == null) {
+				return;
+			}
+			static::save($sections, $context['author']);
 		}
 
 
