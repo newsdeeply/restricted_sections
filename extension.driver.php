@@ -108,6 +108,12 @@
 		protected static function isAllowedToEdit()
 		{
 			$curAuthor = Symphony::Author();
+			
+			// Unauthenticated user can not edit
+			if ($curAuthor == null) {
+				return false;
+			}
+			
 			// Takes privileges to edit this
 			if (!$curAuthor->isDeveloper() &&
 				!$curAuthor->isManager() &&
