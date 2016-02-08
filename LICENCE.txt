@@ -4,8 +4,7 @@ follows:
 
 ----- begin license block -----
 
-Copyright 2015 Deux Huit Huit inc.
-Copyright 2015 News Deeply.
+Copyright 2015-2016 Deux Huit Huit inc. and News Deeply.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
