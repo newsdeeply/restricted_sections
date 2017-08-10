@@ -1,7 +1,5 @@
 # Restricted Sections
 
-Version: 0.2.x
-
 > Restricts authors to selected sections only.
 
 ### SPECS ###
@@ -38,5 +36,3 @@ This field would not have been created if people did not financed it. A big than
 [MIT](http://deuxhuithuit.mit-license.org)
 
 Made with love in Montréal by [Deux Huit Huit](https://deuxhuithuit.com)
-
-Copyright (c) 2015
