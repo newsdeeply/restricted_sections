@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<extension id="restricted_sections" status="experimental" xmlns="http://symphony-cms.com/schemas/extension/1.0">
+<extension id="restricted_sections" status="experimental" xmlns="http://getsymphony.com/schemas/extension/1.0">
 	<name>Restricted Sections</name>
 	<description>
 		Restricts authors to selected sections only.
@@ -9,7 +9,7 @@
 		TODO: Manager are only allowed to delegate their roles.
 	</description>
 	<repo type="github">https://github.com/newsdeeply/restricted_sections</repo>
-	<url type="discuss">http://www.getsymphony.com/discuss/thread/xxx/</url>
+	<!--url type="discuss">https://www.getsymphony.com/discuss/thread/xxx/</url-->
 	<url type="issues">https://github.com/newsdeeply/restricted_sections/issues</url>
 	<types>
 		<type>Authors</type>
@@ -25,7 +25,7 @@
 		<!-- None -->
 	</dependencies>
 	<releases>
-		<release version="1" date="TBA" min="2.7.x" max="4.x.x" php-min="5.6.x" php-max="7.x.x">
+		<release version="0.3.0" date="2017-08-10" min="2.7.x" max="4.x.x" php-min="5.6.x" php-max="7.x.x">
 			- PHP7 Compatibility
 		</release>
 		<release version="0.2.0" date="2016-02-08" min="2.7.x" max="2.7.x">
